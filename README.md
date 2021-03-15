@@ -3,22 +3,26 @@ Ebben a feladatban egy olyan angular projektet valósítunk meg, amely az alább
 
 Új, létező git repóhoz kapcsolódik, annak gyökerébe települ.
 Bootstrapet és FontAwesome-ot használ.
-Két oldal komponenst és egy navigációs menüt is tartalmaz.
+Két oldalkomponenst és egy navigációs menüt is tartalmaz.
 Routing segítségével válthatunk az oldalak között.
-A Home komponensen egy Jumbotron található, benne egy linkkel, amely a lista oldalra vezet routinggal.
-Lista oldalon jeleníti meg az adatokat.
-A lista két komponensből, egy oldal és egy listázó komponensből áll.
+A Home komponensen egy Jumbotron található, benne egy linkkel, amely routinggal a listaoldalra vezet.
+Listaoldalon jeleníti meg az adatokat.
+A lista két komponensből: egy oldal- és egy listázó komponensből áll.
 Egyetlen entitással dolgozik (pl.: Product).
 Az adatok json-serverből érkeznek.
-A json állományt mockaroo-val generáljuk.
-A lista oldalról képesek vagyunk törölni elemeket.
-Git Repository létrehozása README.MD-vel
+A json-állományt mockaroo-val generáljuk.
+A listaoldalról képesek vagyunk törölni elemeket.
+---
+# Git Repository létrehozása README.MD-vel
+
 Állítsd be, hogy létrejöjjön a README.MD! Ez azért kell, hogy klónozható legyen a repó.
+---
+# VSCode indítása, gyűjtő mappa megnyitása
 
-VSCode indítása, gyűjtő mappa megnyitása
-Nyiss meg a VSCode-ban egy olyan mappát/könyvtárat, ahová majd klónozni tudod az imánt létrehozott git repót!
+Nyiss meg a VSCode-ban egy olyan mappát/könyvtárat, ahová majd klónozni tudod az imént létrehozott git repót!
+---
+# Repo klónozása
 
-Repo klónozása
 git clone repo-url
 Belépés a mappába és beállítás rootnak
 cd projectname
@@ -26,18 +30,24 @@ code . -r
 README.MD törlése
 Azért kell törölni a README.MD-t, mert a projekt root-jába szeretnénk létrehozni az angular projektünket, ekkor viszont létrejön egy új README.MD és ha az még létezne, hibát dobna.
 
-Angular telepítése - ha még nem volt
-npm i @angular/cli -g
-Json-server telepítése - ha még nem volt
-npm i json-server
-Új Angular projekt létrehozása - több perc lehet
-ng new --name="project-test" --directory . --style scss --routing true --strict
-A kapcsolók, paraméterek jelentése sorban: --name="project-test" - így adjuk meg a projekt nevét, amelyben a-z vagy - karakterek szerepelhetnek --directory . - így állítjuk be, hogy a projekt abban a mappában jöjjön létre, ahol épp állunk a vscode-ban (root) --style scss - így állítjuk be, hogy scss-t használjon (lehet css, vagy sass is) --routing true - így kapcsoljuk be a rtoutingot --strict - így kapcsoljuk be a strict módot
+( Angular telepítése - ha még nem volt 
+npm i @angular/cli -g )
+( Json-server telepítése - ha még nem volt
+npm i json-server )
+---
+# Új Angular projekt létrehozása - több perc lehet
 
-Bootstrap, Font-Awesome és jQuery telepítése
+ng new --name="project-test" --directory . --style scss --routing true --strict
+
+A kapcsolók, paraméterek jelentése sorban: --name="project-test" - így adjuk meg a projekt nevét, amelyben a-z vagy - karakterek szerepelhetnek --directory . - így állítjuk be, hogy a projekt abban a mappában jöjjön létre, ahol épp állunk a vscode-ban (root) --style scss - így állítjuk be, hogy scss-t használjon (lehet css, vagy sass is) --routing true - így kapcsoljuk be a rtoutingot --strict - így kapcsoljuk be a strict módot
+---
+# Bootstrap, Font-Awesome és jQuery telepítése
+
 npm i bootstrap font-awesome jquery
-Bootstrap, Font-Awesome és jQuery bekötése a projektbe
-érintett fájl: angular.json
+---
+# Bootstrap, Font-Awesome és jQuery bekötése a projektbe
+
+into: angular.json
 
 "styles": [
     "./node_modules/bootstrap/dist/css/bootstrap.min.css", 
@@ -48,32 +58,47 @@ Bootstrap, Font-Awesome és jQuery bekötése a projektbe
     "./node_modules/jquery/dist/jquery.js", 
     "./node_modules/bootstrap/dist/js/bootstrap.min.js"
 ]
-Projekt indításánál megnyissa azt a böngészőben
-érintett fájl: package.json
+---
+# Projekt indításnál nyissa is meg azt a böngészőben
 
-"start": "ng serve -o",
-Első teszt futtatás
+into: package.json
+
+"start": "ng serve -o"
+---
+# Első teszt futtatás
+
 npm start
-Itt megkérdezi, hogy hozzájárulsz-e adatok kültéséhez. Választhatjuk a "No"-t is. Megnyílik az alkalmazás a böngészőben angular alapértelmezett tartalommal. Sikeres futtatás után a folyamat Ki is lőhető.
+Itt megkérdezi, hogy hozzájárulsz-e adatok küldéséhez. Választhatjuk a "No"-t is. Megnyílik az alkalmazás a böngészőben angular alapértelmezett tartalommal. Sikeres futtatás után a folyamat ki is lőhető.
+---
+# Főoldal design felépítése
 
-Főoldal design felépítése
-érintett fájl: app.component.html
+into: app.component.html
 
-Ehhez érdemes feltenni a Bootstrap 4, Font awesome 4 kiegészítőt Ashok Koyi-tól! Az html teljes tartalmát töröljük, majd felépítjük a kívánt komponenseket. Bootstrap navbar (megfelelő mepüpontokkal) Koji kiegészítővel: b4-navbar-default container > row > col a tartalomnak, benne Jumbotron a megfelelő tartalommal Koji kiegészítővel: b4-jumbotron-default
+Ehhez érdemes feltenni a Bootstrap 4, Font awesome 4 kiegészítőt Ashok Koyi-tól! 
+A html teljes tartalmát töröljük, majd felépítjük a kívánt komponenseket. 
+Bootstrap navbar (megfelelő mepüpontokkal) Koji kiegészítővel: 
+
+b4-navbar-default 
+container > row > col a tartalomnak, 
+benne Jumbotron a megfelelő tartalommal Koji kiegészítővel: 
+b4-jumbotron-default
 
 Komponensek létrehozása
-Oldal komponensek - site mappa (p.l: pages/home, site/products) Egyéb komponensek - common mappa (pl.: common/product-list)
+Oldalkomponensek: page mappa (pl.: home) 
+Egyéb komponensek - common mappa (pl.: navigation, product-list, product-edit)
 
-ng g c pages/home
-ng g c pages/products
+ng g c page/home
+
 ng g c common/navigation
 ng g c common/product-list
-A létrehozott komponensek az app-module.ts-ben is bejegyződnek. Fontos, ha valami okból kifolyólag törölnünk kell egy komponenst, innen is el kell távolítanunk és nem elég a fájlok törlése.
+ng g c common/product-edit
 
-Főoldal HTML tartalmának kiszervezése komponensekbe (előkészülés a routingra)
-navbar -> navigation - helyére
-jumbotron -> home - helyére
+A létrehozott komponensek az app-module.ts-be is bejegyződnek. Fontos, ha valami okból kifolyólag törölnünk kell egy komponenst, innen is el kell távolítanunk, nem elég a fájlok törlése.
+---
+## Előkészülés a routingra
+---
 Routing a navbar-ban
+
 érintett fájl: navigation.component.html
 
 elemben href="" helyett routerLink="/"
